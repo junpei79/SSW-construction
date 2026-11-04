@@ -30,6 +30,44 @@ a{color:var(--nv)}
 #authCard{width:min(100%,440px);background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:22px;box-shadow:0 12px 40px rgba(0,0,0,.12)}
 #authCard input{width:100%;margin:6px 0 12px}#authCard button{width:100%;margin:5px 0}#authMsg{min-height:1.5em;font-size:.9em;color:var(--rd)}#app.auth-locked{visibility:hidden}
 .auth-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.auth-tools button{width:auto}
+
+/* Strong mobile layout overrides */
+@media screen and (max-width: 800px) {
+  html, body { width:100%; min-width:0; overflow-x:hidden; }
+  #app { display:block !important; width:100%; min-height:100vh; }
+  #nav {
+    position:fixed !important; top:auto !important; bottom:0 !important;
+    left:0 !important; right:0 !important; width:100% !important;
+    height:auto !important; min-height:64px; max-height:84px;
+    display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important;
+    align-items:center; justify-content:flex-start; gap:2px;
+    overflow-x:auto !important; overflow-y:hidden !important;
+    background:var(--cd) !important; border-top:1px solid var(--bd) !important;
+    border-right:0 !important; padding:5px 5px calc(5px + env(safe-area-inset-bottom,0px)) !important;
+    z-index:50; -webkit-overflow-scrolling:touch;
+  }
+  #nav a { flex:0 0 auto !important; min-width:72px; text-align:center;
+    white-space:nowrap; font-size:12px !important; line-height:1.25;
+    padding:5px 7px !important; }
+  #nav a span { display:block; margin:0 auto 2px !important; font-size:22px !important; }
+  main, #main { display:block !important; width:100% !important; max-width:none !important;
+    min-width:0 !important; margin:0 !important;
+    padding:14px 12px calc(100px + env(safe-area-inset-bottom,0px)) !important; }
+  .g { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:8px !important; }
+  .g .c { min-width:0; padding:10px !important; }
+  .c { min-width:0; padding:12px !important; overflow-wrap:anywhere; }
+  .row { max-width:100%; }
+  .row input, input, select, textarea { max-width:100%; min-width:0; }
+  button { min-height:42px; max-width:100%; }
+  .tbl { display:block; max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table { min-width:520px; }
+  #authGate { align-items:flex-start; padding:14px 12px calc(18px + env(safe-area-inset-bottom,0px)); }
+  #authCard { margin:auto 0; width:100%; max-width:440px; padding:18px; }
+}
+@media screen and (max-width:380px) {
+  .g { grid-template-columns:minmax(0,1fr) !important; }
+  h1 { font-size:1.4em; }
+}
 </style></head><body>
 <div id="authGate"><div id="authCard"><h1>SSW Construction Academy</h1><p>Sign in with Google to save your lessons, quiz results and vocabulary progress to your cloud account.</p>
 <button class="pri" id="googleSignIn">Continue with Google</button>
